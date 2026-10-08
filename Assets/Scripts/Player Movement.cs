@@ -29,6 +29,7 @@ public class Movement : MonoBehaviour
         //Move
         move2d = moveAction.ReadValue<Vector2>(); //Reads input
         moveVal = new Vector3(move2d.x, 0, move2d.y); //Turns into Vector3
+        
 
         if (jumpAction.WasPerformedThisFrame())
         {
@@ -38,7 +39,7 @@ public class Movement : MonoBehaviour
     }
     void FixedUpdate()
     {
-        rigidbody.AddForce(moveVal * acc, ForceMode.Acceleration);
+        rigidbody.AddRelativeForce(moveVal * acc, ForceMode.Acceleration);
         CapSpeed(rigidbody);
     
         if (jumpRequested)
@@ -57,9 +58,7 @@ public class Movement : MonoBehaviour
     void CapSpeed(Rigidbody rb)
     {
         Vector3 v_current = rb.linearVelocity;
-
         Vector3 v_horizontal = new Vector3(v_current.x, 0f, v_current.z);
-
         if (v_horizontal.magnitude > max_speed)
         {
             v_horizontal = Vector3.ClampMagnitude(v_horizontal, max_speed);
