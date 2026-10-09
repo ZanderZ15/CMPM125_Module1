@@ -33,7 +33,7 @@ public class Movement : MonoBehaviour
 
         if (jumpAction.WasPerformedThisFrame())
         {
-            jumpRequested = true;//rigidbody.AddForce(Vector3 force, ForceMode mode = ForceMode.Force);
+            jumpRequested = true;
         }
 
     }
@@ -47,7 +47,7 @@ public class Movement : MonoBehaviour
             // Use Impulse mode for instant bursts like jumps
             rigidbody.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
             
-            jumpRequested = false; // Reset the flag immediately
+            jumpRequested = false;
         }
         if (rigidbody.linearVelocity.y < 0)
         {
