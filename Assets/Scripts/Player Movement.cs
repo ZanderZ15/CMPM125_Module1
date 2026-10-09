@@ -15,6 +15,9 @@ public class Movement : MonoBehaviour
     Vector3 moveVal;
 
     private Rigidbody rigidbody;
+
+    private float rayLength = .7f;
+    [SerializeField] private LayerMask groundMask;
     
 
     void Start()
@@ -31,7 +34,7 @@ public class Movement : MonoBehaviour
         moveVal = new Vector3(move2d.x, 0, move2d.y); //Turns into Vector3
         
 
-        if (jumpAction.WasPerformedThisFrame())
+        if (jumpAction.WasPerformedThisFrame() && Grounded())
         {
             jumpRequested = true;
         }
@@ -65,4 +68,10 @@ public class Movement : MonoBehaviour
             rb.linearVelocity = new Vector3(v_horizontal.x, v_current.y, v_horizontal.z);
         }
     }    
+    bool Grounded()
+    {
+        Debug.DrawRay(transform.position, Vector3.down * rayLength, Color.red);
+
+        return Physics.Raycast(transform.position, Vector3.down, rayLength, groundMask);;
+    }
 }
