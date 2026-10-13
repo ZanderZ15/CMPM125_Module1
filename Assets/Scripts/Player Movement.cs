@@ -9,8 +9,8 @@ public class Movement : MonoBehaviour
     private bool jumpRequested = false;
     private float acc = 160f;
 
-    private float max_speed = 12.5f;
-    private float jumpPower = 5f;
+    private float max_speed = 20f;
+    private float jumpPower = 7.5f;
     Vector2 move2d;
     Vector3 moveVal;
 
@@ -35,7 +35,6 @@ public class Movement : MonoBehaviour
         
         if (jumpAction.WasPerformedThisFrame() && Grounded())
         {
-            //Debug.Log("Made it out the check");
             jumpRequested = true;
         }
 
@@ -47,15 +46,13 @@ public class Movement : MonoBehaviour
     
         if (jumpRequested)
         {
-            //Debug.Log("Trying so hard to jump");
-            // Use Impulse mode for instant bursts like jumps
+            // Use Impulse mode for jumping
             rigidbody.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
             
             jumpRequested = false;
         }
         if (!Grounded() && rigidbody.linearVelocity.y < 0)
         {
-            //Debug.Log("AHH IM FALLING");
             // Pulls the player down slightly harder during a fall
             rigidbody.AddForce(Vector3.down * 15f, ForceMode.Acceleration); 
         }
