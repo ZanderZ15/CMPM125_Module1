@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class GamerMovement : MonoBehaviour
 {
     private Vector3 movement;
-    private float speed = 5f;
+    private float speed = 10f;
     void Start(){}
 
     void Update()
