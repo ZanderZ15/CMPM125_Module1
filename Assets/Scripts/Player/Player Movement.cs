@@ -7,9 +7,9 @@ public class Movement : MonoBehaviour
     private InputAction moveAction;
     private InputAction jumpAction;
     private bool jumpRequested = false;
-    private float acc = 160f;
+    private float acc = 100f;
 
-    private float max_speed = 20f;
+    private float max_speed = 18f;
     private float jumpPower = 7.5f;
     Vector2 move2d;
     Vector3 moveVal;
