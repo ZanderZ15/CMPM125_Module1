@@ -15,10 +15,16 @@ public class EventBus
     }
     
     public event Action GoalScored;
-
     public void OnGoalScored()
     {
         GoalScored?.Invoke();
+    }
+
+    public event Action HorrorButton;
+    public void OnHorrorButtonHit()
+    {
+        HorrorButton?.Invoke();
+        
     }
 
 }
