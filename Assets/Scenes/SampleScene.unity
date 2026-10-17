@@ -410,6 +410,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 425354076}
+  - component: {fileID: 425354077}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -426,12 +427,25 @@ Transform:
   m_GameObject: {fileID: 425354075}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.87556, y: 0.5, z: -24.36355}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &425354077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425354075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f16cc262b9c13fc43bc2a82563f9bfcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallSpawner
+  ballprefab: {fileID: 6736627532775234735, guid: ae1be21fc52d67045a6e3780ba5f7686, type: 3}
 --- !u!4 &717146140 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2059763334288433812, guid: 45d47cfce24247949b3d04138b133106, type: 3}
@@ -1267,7 +1281,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2059763334288433812, guid: 45d47cfce24247949b3d04138b133106, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: 5.4
       objectReference: {fileID: 0}
     - target: {fileID: 2059763334288433812, guid: 45d47cfce24247949b3d04138b133106, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1324,7 +1338,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2059763334288433812, guid: 45d47cfce24247949b3d04138b133106, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: 5.4
       objectReference: {fileID: 0}
     - target: {fileID: 2059763334288433812, guid: 45d47cfce24247949b3d04138b133106, type: 3}
       propertyPath: m_LocalPosition.z

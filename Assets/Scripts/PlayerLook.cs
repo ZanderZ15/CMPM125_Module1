@@ -19,6 +19,6 @@ public class PlayerLook : MonoBehaviour
     {
         mouseDelta = lookAction.ReadValue<Vector2>();
         this.gameObject.transform.Rotate(0, mouseDelta.x/ 10, 0);
-        camera.transform.Rotate(-mouseDelta.y/10, 0, 0);
+        camera.transform.Rotate(-mouseDelta.y/20, 0, 0);
     }
 }

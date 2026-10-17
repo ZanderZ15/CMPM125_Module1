@@ -12,6 +12,7 @@ public class BallSpawner : MonoBehaviour
     private void OnEnable()
     {
         EventBus.Instance.GoalScored += GoalScored;
+        SpawnBall();
     }
     public void GoalScored()
     {
