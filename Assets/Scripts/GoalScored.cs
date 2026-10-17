@@ -10,6 +10,7 @@ public class GoalScored : MonoBehaviour
         if(!other.CompareTag("Ball")) {return;}
         Destroy(other.gameObject);
         Debug.Log("GOAL!");
+        
 
         //other.transform.position = new Vector3(0f, 5f, 0f); // Reset Ball position
         //other.attachedRigidbody.linearVelocity = Vector3.zero; //reset speed

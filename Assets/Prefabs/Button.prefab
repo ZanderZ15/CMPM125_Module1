@@ -121,7 +121,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1242080480495130224}
-  - component: {fileID: 1429078191038270435}
   - component: {fileID: 6113748027258400786}
   m_Layer: 0
   m_Name: Button
@@ -147,19 +146,6 @@ Transform:
   - {fileID: 7915417996686121639}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1429078191038270435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4912637509837343171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f16cc262b9c13fc43bc2a82563f9bfcd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BallSpawner
-  ballprefab: {fileID: 0}
 --- !u!65 &6113748027258400786
 BoxCollider:
   m_ObjectHideFlags: 0

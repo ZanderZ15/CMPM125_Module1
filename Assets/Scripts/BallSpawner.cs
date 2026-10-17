@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using System;
 
 public class BallSpawner : MonoBehaviour
 {
@@ -8,11 +9,18 @@ public class BallSpawner : MonoBehaviour
     Quaternion spawnRotation = Quaternion.identity;
     [SerializeField] private GameObject ballprefab;
 
-    void Start(){Instantiate(ballprefab, spawnLocation, spawnRotation);}
-    void Update(){}
+    private void OnEnable()
+    {
+        EventBus.Instance.GoalScored += GoalScored;
+    }
+    public void GoalScored()
+    {
+        SpawnBall();
+    }
 
-    private void OnTriggerEnter(Collider other)
+    private void SpawnBall()
     {
         Instantiate(ballprefab, spawnLocation, spawnRotation);
     }
+    
 }
