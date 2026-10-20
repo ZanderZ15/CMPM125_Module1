@@ -52,7 +52,6 @@ public class PlayerSpawner : MonoBehaviour
             //TODO:
             //Call a "REAL" spawn player
             //need to figure out rotation based on spawn point later
-            Debug.Log(transform.Find(pos));
             GameObject blue = Instantiate(player_prefab, b_point.position, Quaternion.identity);
             GameObject orange = Instantiate(player_prefab, o_point.position, Quaternion.identity);
             

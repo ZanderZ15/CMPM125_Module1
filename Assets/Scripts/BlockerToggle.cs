@@ -1,16 +1,15 @@
+using System;
 using UnityEngine;
 
 public class BlockerToggle : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] private GameObject blockers_group;
 
-    // Update is called once per frame
-    void Update()
+    void OnTriggerEnter(Collider other)
     {
-        
+        if (blockers_group.activeInHierarchy)
+            blockers_group.SetActive(false);
+        else
+            blockers_group.SetActive(true);
     }
 }
