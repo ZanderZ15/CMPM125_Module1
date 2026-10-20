@@ -666,6 +666,7 @@ GameObject:
   - component: {fileID: 425354077}
   - component: {fileID: 425354078}
   - component: {fileID: 425354079}
+  - component: {fileID: 425354080}
   m_Layer: 0
   m_Name: ManagerObject
   m_TagString: Untagged
@@ -701,6 +702,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BallSpawner
   ballprefab: {fileID: 6736627532775234735, guid: ae1be21fc52d67045a6e3780ba5f7686, type: 3}
+  blue_mat: {fileID: 2100000, guid: 8df7841248a57f145afb3eb1813c5e28, type: 2}
+  orange_mat: {fileID: 2100000, guid: edae2d67c1a9cad41bd2d70e5915a523, type: 2}
+  white_mat: {fileID: 2100000, guid: b9e7fd5b97627114087e6c3c87463576, type: 2}
+  black_mat: {fileID: 2100000, guid: edf6ad779764f3a45a9ab8b988ff7f59, type: 2}
+  red_mat: {fileID: 2100000, guid: a92f6b4905e719542beb57e020c3767e, type: 2}
+  purple_mat: {fileID: 2100000, guid: daede82d510769949ad8444a693f9028, type: 2}
+  green_mat: {fileID: 2100000, guid: 1de2f718940a75648aa91fde18d3226b, type: 2}
 --- !u!114 &425354078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -727,6 +735,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomChanger
   room_prefab: {fileID: 7120113565114856251, guid: 11a4482e96adff842a2efd3d7265d4ed, type: 3}
+--- !u!114 &425354080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425354075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8556452b0f9036f4c91b24a71318b390, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameTimer
+  minutes: 0.1
 --- !u!1 &696433011 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7120113565114856251, guid: 11a4482e96adff842a2efd3d7265d4ed, type: 3}

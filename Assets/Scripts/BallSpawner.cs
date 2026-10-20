@@ -23,15 +23,16 @@ public class BallSpawner : MonoBehaviour
     private void OnEnable()
     {
         EventBus.Instance.GoalScored += GoalScored;
-        
-    }
-    private void Start()
-    {
         mats = new() {blue_mat, orange_mat, 
             white_mat, white_mat, 
             black_mat, black_mat, 
             red_mat, red_mat, red_mat, 
             purple_mat, green_mat};
+        
+    }
+    private void Start()
+    {
+        
         SpawnBall();
     }
     public void GoalScored()
