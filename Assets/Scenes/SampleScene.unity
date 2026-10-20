@@ -391,6 +391,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomChanger
   room_prefab: {fileID: 7120113565114856251, guid: 11a4482e96adff842a2efd3d7265d4ed, type: 3}
+--- !u!1 &696433011 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7120113565114856251, guid: 11a4482e96adff842a2efd3d7265d4ed, type: 3}
+  m_PrefabInstance: {fileID: 3475699475779148644}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &696433013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696433011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1bca7190288f5b4296642421c75cca5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSpawner
+  player_prefab: {fileID: 5858471929321119531, guid: c9444cb57a41db84bba03b8dd4197ef1, type: 3}
+  blue_mat: {fileID: 2100000, guid: 8df7841248a57f145afb3eb1813c5e28, type: 2}
+  orange_mat: {fileID: 2100000, guid: edae2d67c1a9cad41bd2d70e5915a523, type: 2}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -512,7 +532,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7120113565114856251, guid: 11a4482e96adff842a2efd3d7265d4ed, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 696433013}
   m_SourcePrefab: {fileID: 100100000, guid: 11a4482e96adff842a2efd3d7265d4ed, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

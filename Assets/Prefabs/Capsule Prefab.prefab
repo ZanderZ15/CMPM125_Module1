@@ -13,8 +13,6 @@ GameObject:
   - component: {fileID: 6421000553549184780}
   - component: {fileID: 739451475886214943}
   - component: {fileID: 1334464477843894236}
-  - component: {fileID: 6731627522810829269}
-  - component: {fileID: 1161183641435738554}
   m_Layer: 0
   m_Name: Capsule Prefab
   m_TagString: Untagged
@@ -144,31 +142,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &6731627522810829269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4639089266502112010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4ed57082c4792142bcfab5a894a3740, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Movement
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 0
---- !u!114 &1161183641435738554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4639089266502112010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d9dcfb750b6a4744b5e8e3f17be034b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerLook
-  camera: {fileID: 0}

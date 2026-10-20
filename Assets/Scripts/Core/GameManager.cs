@@ -20,17 +20,18 @@ public class GameManager : MonoBehaviour
     
     public enum GameState
     { //useful if/when i want to add more formal resets on goals
+        PREGAME,
         INGAME
     }
     public GameState state;
     void Start()
     {
         EventBus.Instance.HorrorButton += HorrorModeToggle;
+        state = GameState.PREGAME;
     }
 
     void Update()
     {
-        
     }
     private void HorrorModeToggle()
     {

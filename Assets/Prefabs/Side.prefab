@@ -77,7 +77,6 @@ GameObject:
   - component: {fileID: 548579999326160916}
   - component: {fileID: 419313680162577192}
   - component: {fileID: 5964375691281648261}
-  - component: {fileID: 5139370499661054832}
   m_Layer: 3
   m_Name: Side
   m_TagString: Untagged
@@ -179,18 +178,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5139370499661054832
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5927932992990064867}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1bca7190288f5b4296642421c75cca5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerSpawner
 --- !u!1 &8121305841660847363
 GameObject:
   m_ObjectHideFlags: 0
