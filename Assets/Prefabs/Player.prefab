@@ -182,7 +182,6 @@ GameObject:
   - component: {fileID: 6278906666975464603}
   - component: {fileID: 1347679982886184979}
   - component: {fileID: 1475627040441085881}
-  - component: {fileID: 1374673455260316984}
   - component: {fileID: 2421008801887181632}
   m_Layer: 0
   m_Name: Player
@@ -306,19 +305,6 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 8
---- !u!114 &1374673455260316984
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8841624254414977808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d9dcfb750b6a4744b5e8e3f17be034b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerLook
-  camera: {fileID: 3430572150119890191}
 --- !u!65 &2421008801887181632
 BoxCollider:
   m_ObjectHideFlags: 0
