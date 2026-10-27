@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
     private void HorrorModeToggle()
     {
         horror_mode = !horror_mode; 
-        Debug.Log(horror_mode);
+        //Debug.Log(horror_mode);
     }
 
     public bool GetHorrorMode()

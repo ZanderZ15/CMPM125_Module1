@@ -58,9 +58,9 @@ public class EventBus
         AudioChange?.Invoke();
     }
     public event Action FOVChange;
-    public void OnFOVChange(float volume)
+    public void OnFOVChange(float fov)
     {
-        GameManager.Instance.setFOV(volume);
+        GameManager.Instance.setFOV(fov);
         FOVChange?.Invoke();
     }
     

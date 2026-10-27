@@ -36,7 +36,6 @@ public class Movable : MonoBehaviour
 
     private void OnGamePlaying()
     {
-        Debug.Log(velocity);
         rb.linearVelocity = velocity;
         rb.useGravity = true;
     }

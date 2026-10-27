@@ -13,6 +13,7 @@ public class MenuController : MonoBehaviour
     [SerializeField] private Button credits_button;
     [SerializeField] private Button[] back_buttons;
     [SerializeField] private Canvas[] screens;
+    [SerializeField] private GameObject[] sliders;
     private Canvas current_screen;
     private AsyncOperation loadOperation;
 
@@ -93,12 +94,23 @@ public class MenuController : MonoBehaviour
         //TODO
         //bring menus back
         EventBus.Instance.OnMenuOpen();
+        screens[3].enabled = true;
+        UpdateSliders();
+
     }
     void Resume()
     {
         //TODO
         //Banish the menus
         EventBus.Instance.GamePlaying();
+        screens[3].enabled = false;
+    }
+
+    private void UpdateSliders()
+    {
+        sliders[0].GetComponent<Slider>().value = GameManager.Instance.getAudio();
+        sliders[1].GetComponent<Slider>().value = GameManager.Instance.getFOV()/120f;
+        
     }
 
 }
