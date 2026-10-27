@@ -13,7 +13,16 @@ public class EventBus
             return theInstance;
         }
     }
-    
+    public event Action INGAME;
+    public void GamePlaying()
+    {
+        INGAME?.Invoke();
+    }
+    public event Action MENU;
+    public void OnMenuOpen()
+    {
+        MENU?.Invoke();
+    }
     public event Action GoalScored;
     public void OnGoalScored()
     {
@@ -25,6 +34,22 @@ public class EventBus
     {
         HorrorButton?.Invoke();
         
+    }
+    public event Action EscapeHit;
+    public void OnEscapeHit()
+    {
+        EscapeHit?.Invoke();
+        
+    }
+    public event Action StateChange;
+    public void OnStateChange()
+    {
+        StateChange?.Invoke();
+    }
+    public event Action Play;
+    public void OnPlayGame()
+    {
+        Play?.Invoke();
     }
 
 }

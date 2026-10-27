@@ -1,25 +1,48 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class GameTimer : MonoBehaviour
 {
     [SerializeField] private float minutes = .1f;
     // The true default would be 5 minutes but for the sake of testing and demoing, 6 seconds will work
+
+    private Coroutine countdownCoroutine;
+    
     void Start()
     {
-        StartCoroutine(MatchCountdown());
+        EventBus.Instance.Play += OnPlay;
     }
 
-    // Update is called once per frame
     void Update()
     {
         
     }
+    void OnDisable()
+    {
+        EventBus.Instance.Play -= OnPlay;
+        StopCoroutine(countdownCoroutine);
+    }
     IEnumerator MatchCountdown()
     {
-        WaitForSeconds gameTime = new WaitForSeconds(60f*minutes);
+        float seconds_passed = 0f;
+        float minutes_in_seconds = minutes*60f;
+        while (seconds_passed < minutes_in_seconds)
+        {
+            yield return new WaitForSeconds(1f);
+            seconds_passed++;
+        }
+        Debug.Log("GAME OVER");
+        
+    }
 
-        yield return gameTime;
-        Debug.Log("Oh no! Game over? That was quick huh?");
+    private void OnPlay()
+    {
+        if (countdownCoroutine != null)
+        {
+            StopCoroutine(countdownCoroutine);
+        }
+
+        countdownCoroutine = StartCoroutine(MatchCountdown());
     }
 }

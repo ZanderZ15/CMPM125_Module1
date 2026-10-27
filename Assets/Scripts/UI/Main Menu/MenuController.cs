@@ -16,6 +16,10 @@ public class MenuController : MonoBehaviour
     private Canvas current_screen;
     private AsyncOperation loadOperation;
 
+    void Start()
+    {
+        EventBus.Instance.StateChange += StateChange;
+    }
     void OnEnable()
     {
         play_button.onClick.AddListener(OnPlayButtonClicked);
@@ -27,7 +31,7 @@ public class MenuController : MonoBehaviour
 
             canvas.transform.localPosition = Vector3.zero;
             if(c > 0){canvas.enabled = false;}
-            c++;
+            c++; //c++ mention!!!
         }
         
     }
@@ -45,11 +49,15 @@ public class MenuController : MonoBehaviour
     }
     void OnPlayButtonClicked()
     {
-        LoadScene("RLScene");
+        //TODO
+        screens[0].enabled = false;
+        EventBus.Instance.OnPlayGame();
+        //
     }
     void OnOptionsButtonClicked()
     {
-        //Remember CanvasGroups
+        //Remember CanvasGroups; 
+        // i made this note but honestly I dont remember what to do or how to use it here lmao
         screens[0].enabled = false;
         screens[1].enabled = true;
         current_screen = screens[1];
@@ -67,5 +75,30 @@ public class MenuController : MonoBehaviour
         screens[0].enabled = true;
         current_screen.enabled = false;
     } 
+
+    void StateChange()
+    {
+        switch (GameManager.Instance.state)
+        {
+            case GameManager.GameState.INGAME:
+            Resume();
+            break;
+            case GameManager.GameState.MENU:
+            Pause();
+            break;
+        }
+    }
+    void Pause()
+    {
+        //TODO
+        //bring menus back
+        EventBus.Instance.OnMenuOpen();
+    }
+    void Resume()
+    {
+        //TODO
+        //Banish the menus
+        EventBus.Instance.GamePlaying();
+    }
 
 }
