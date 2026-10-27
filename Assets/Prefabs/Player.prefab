@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5289457521953748913}
   - component: {fileID: 444504879084094976}
   - component: {fileID: 7836575155900220931}
+  - component: {fileID: 2275729235590720777}
   m_Layer: 0
   m_Name: PlayerCam
   m_TagString: MainCamera
@@ -137,6 +138,18 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &2275729235590720777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3430572150119890191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 643f07ae73a75df4da35e202f66442e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RegisterCamera
 --- !u!1 &5858471929321119531
 GameObject:
   m_ObjectHideFlags: 0

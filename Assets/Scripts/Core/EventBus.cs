@@ -51,5 +51,18 @@ public class EventBus
     {
         Play?.Invoke();
     }
+    public event Action AudioChange;
+    public void OnAudioChange(float volume)
+    {
+        GameManager.Instance.setAudio(volume);
+        AudioChange?.Invoke();
+    }
+    public event Action FOVChange;
+    public void OnFOVChange(float volume)
+    {
+        GameManager.Instance.setFOV(volume);
+        FOVChange?.Invoke();
+    }
+    
 
 }

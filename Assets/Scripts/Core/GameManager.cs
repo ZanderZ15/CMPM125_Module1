@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     }
     }
     private bool horror_mode = false;
+    private float audio_volume = .5f;
+    private float fov = 60f;
     
     public enum GameState
     { //useful if/when i want to add more formal resets on goals
@@ -73,8 +75,25 @@ public class GameManager : MonoBehaviour
     }
     private void GameStart()
     {
-        //TODO
         state = GameState.INGAME;
         EventBus.Instance.OnStateChange();
     }
+
+    public float getAudio()
+    {
+        return audio_volume;
+    }
+    public void setAudio(float vol)
+    {
+        audio_volume = vol;
+    }
+    public float getFOV()
+    {
+        return fov;
+    }
+    public void setFOV(float fov_in)
+    {
+        fov = fov_in;
+    }
+
 }

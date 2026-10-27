@@ -21,7 +21,11 @@ public class GameTimer : MonoBehaviour
     void OnDisable()
     {
         EventBus.Instance.Play -= OnPlay;
-        StopCoroutine(countdownCoroutine);
+        if (countdownCoroutine != null) 
+        {
+            StopCoroutine(countdownCoroutine);
+        }
+
     }
     IEnumerator MatchCountdown()
     {

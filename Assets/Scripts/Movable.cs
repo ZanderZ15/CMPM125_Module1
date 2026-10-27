@@ -10,6 +10,7 @@ public class Movable : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         EventBus.Instance.MENU += OnMenuOpened;
         EventBus.Instance.INGAME += OnGamePlaying;
+        EventBus.Instance.Play += OnGamePlaying;
         if (GameManager.Instance.state != GameManager.GameState.INGAME)
         {
             OnMenuOpened();
@@ -22,6 +23,7 @@ public class Movable : MonoBehaviour
     {
         EventBus.Instance.MENU -= OnMenuOpened;
         EventBus.Instance.INGAME -= OnGamePlaying;
+        EventBus.Instance.Play -= OnGamePlaying;
     }
 
     private void OnMenuOpened()
@@ -34,6 +36,7 @@ public class Movable : MonoBehaviour
 
     private void OnGamePlaying()
     {
+        Debug.Log(velocity);
         rb.linearVelocity = velocity;
         rb.useGravity = true;
     }
