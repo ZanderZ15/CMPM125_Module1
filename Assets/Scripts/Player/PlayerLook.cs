@@ -12,6 +12,7 @@ public class PlayerLook : MonoBehaviour
     {
         EventBus.Instance.INGAME += Playing;
         EventBus.Instance.MENU += Idle;
+        EventBus.Instance.GameEnd += Idle;
     }
     void Playing()
     {
@@ -31,6 +32,7 @@ public class PlayerLook : MonoBehaviour
     {
         EventBus.Instance.INGAME -= Playing;
         EventBus.Instance.MENU -= Idle;
+        EventBus.Instance.GameEnd -= Idle;
     }
 
     void Update()

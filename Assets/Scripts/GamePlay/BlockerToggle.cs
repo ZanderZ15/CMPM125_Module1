@@ -6,7 +6,7 @@ using UnityEngine;
 public class BlockerToggle : MonoBehaviour
 {
     [SerializeField] private GameObject blockers_group;
-    [SerializeField] private Dictionary<string, float> range;
+    private Dictionary<string, float> range;
         
 
     void Start()

@@ -36,7 +36,7 @@ public class GameTimer : MonoBehaviour
             yield return new WaitForSeconds(1f);
             seconds_passed++;
         }
-        Debug.Log("GAME OVER");
+        //Debug.Log("GAME OVER");
         EventBus.Instance.OnGameEnd();
 
     }

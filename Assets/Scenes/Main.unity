@@ -173,7 +173,7 @@ PrefabInstance:
       objectReference: {fileID: 6736627532775234735, guid: ae1be21fc52d67045a6e3780ba5f7686, type: 3}
     - target: {fileID: 4912637509837343171, guid: 9b44084dff39e804483ba816420fea68, type: 3}
       propertyPath: m_Name
-      value: Button (1)
+      value: Horror Button
       objectReference: {fileID: 0}
     - target: {fileID: 7493644803177864321, guid: 9b44084dff39e804483ba816420fea68, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -210,7 +210,7 @@ PrefabInstance:
     - target: {fileID: 340181202385821991, guid: 99cc2d84ab94e0c4b8d7d2c248b96db2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 11500000, guid: 7c51438bcfd7d2f42b68a0344e57ad36, type: 3}
+      objectReference: {fileID: 651527586}
     - target: {fileID: 340181202385821991, guid: 99cc2d84ab94e0c4b8d7d2c248b96db2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -1959,7 +1959,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 13
   m_Type: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.7875355, b: 0.76037735, a: 1}
   m_Intensity: 2
   m_Range: 10
   m_SpotAngle: 30
@@ -1969,7 +1969,7 @@ Light:
     m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.8
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -2003,7 +2003,7 @@ Light:
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_ColorTemperature: 5000
+  m_ColorTemperature: 2650
   m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
@@ -2023,7 +2023,7 @@ Transform:
   m_GameObject: {fileID: 410087039}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5072621, y: 0.39905983, z: -0.47847602, w: 0.59539664}
-  m_LocalPosition: {x: 262.4, y: 37.5, z: 40.5}
+  m_LocalPosition: {x: 19.43, y: 33.07, z: -0.77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3044,7 +3044,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1242080480495130224, guid: 9b44084dff39e804483ba816420fea68, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 27.22477
+      value: 26.83
       objectReference: {fileID: 0}
     - target: {fileID: 1242080480495130224, guid: 9b44084dff39e804483ba816420fea68, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3052,7 +3052,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1242080480495130224, guid: 9b44084dff39e804483ba816420fea68, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -17.086544
+      value: -17.46
       objectReference: {fileID: 0}
     - target: {fileID: 1242080480495130224, guid: 9b44084dff39e804483ba816420fea68, type: 3}
       propertyPath: m_LocalRotation.w
