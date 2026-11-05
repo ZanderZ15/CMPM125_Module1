@@ -14,12 +14,14 @@ public class MenuController : MonoBehaviour
     [SerializeField] private Button[] back_buttons;
     [SerializeField] private Canvas[] screens;
     [SerializeField] private GameObject[] sliders;
+    [SerializeField] private CanvasGroup pausegroup;
     private Canvas current_screen;
     private AsyncOperation loadOperation;
 
     void Start()
     {
         EventBus.Instance.StateChange += StateChange;
+        EventBus.Instance.GameEnd += GameOverScreen;
     }
     void OnEnable()
     {
@@ -96,6 +98,7 @@ public class MenuController : MonoBehaviour
         EventBus.Instance.OnMenuOpen();
         screens[3].enabled = true;
         UpdateSliders();
+        pausegroup.interactable = true;
 
     }
     void Resume()
@@ -103,14 +106,30 @@ public class MenuController : MonoBehaviour
         //TODO
         //Banish the menus
         EventBus.Instance.GamePlaying();
+        pausegroup.interactable = false;
         screens[3].enabled = false;
+        
     }
 
     private void UpdateSliders()
     {
         sliders[0].GetComponent<Slider>().value = GameManager.Instance.getAudio();
         sliders[1].GetComponent<Slider>().value = GameManager.Instance.getFOV()/120f;
-        
+    }
+
+    private void GameOverScreen()
+    {
+        screens[4].enabled = true;
+        //TODO: need to do cleanup eventually
+    }
+    public void OkayButton()
+    {
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #else
+        // If running as a standalone build
+        Application.Quit();
+        #endif
     }
 
 }

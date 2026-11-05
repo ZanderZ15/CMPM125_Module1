@@ -4,8 +4,8 @@ using UnityEngine.AI;
 
 public class GameTimer : MonoBehaviour
 {
-    [SerializeField] private float minutes = .1f;
-    // The true default would be 5 minutes but for the sake of testing and demoing, 6 seconds will work
+    [SerializeField] private float minutes = 1f;
+    // The true default would be 5 minutes but for the sake of testing and demoing it is subject to change
 
     private Coroutine countdownCoroutine;
     
@@ -37,7 +37,8 @@ public class GameTimer : MonoBehaviour
             seconds_passed++;
         }
         Debug.Log("GAME OVER");
-        
+        EventBus.Instance.OnGameEnd();
+
     }
 
     private void OnPlay()

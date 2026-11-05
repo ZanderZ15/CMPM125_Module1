@@ -24,9 +24,10 @@ public class EventBus
         MENU?.Invoke();
     }
     public event Action GoalScored;
-    public void OnGoalScored()
+    public void OnGoalScored(string tag)
     {
-        GoalScored?.Invoke();
+        GameManager.Instance.AddGoal(tag);
+        GoalScored?.Invoke(); 
     }
 
     public event Action HorrorButton;
@@ -63,6 +64,10 @@ public class EventBus
         GameManager.Instance.setFOV(fov);
         FOVChange?.Invoke();
     }
-    
+    public event Action GameEnd;
+    public void OnGameEnd()
+    {
+        GameEnd?.Invoke();
+    }
 
 }

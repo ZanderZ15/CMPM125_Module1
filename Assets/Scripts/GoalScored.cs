@@ -10,7 +10,6 @@ public class GoalScored : MonoBehaviour
         if(!other.CompareTag("Ball")) {return;}
         Destroy(other.gameObject);
         Debug.Log("GOAL!");
-
-        EventBus.Instance.OnGoalScored();
+        EventBus.Instance.OnGoalScored(gameObject.tag);
     }
 }
