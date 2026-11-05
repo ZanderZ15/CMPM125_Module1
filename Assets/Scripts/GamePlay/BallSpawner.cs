@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 using UnityEditor.SpeedTree.Importer;
+using UnityEditor.Callbacks;
 
 public class BallSpawner : MonoBehaviour
 {
@@ -20,6 +21,10 @@ public class BallSpawner : MonoBehaviour
 
     List<Material> mats;
 
+    private GameObject ball;
+
+    
+
     private void OnEnable()
     {
         EventBus.Instance.GoalScored += GoalScored;
@@ -32,17 +37,29 @@ public class BallSpawner : MonoBehaviour
     }
     private void Start()
     {
-        
         SpawnBall();
+    }
+    private void OnDisable()
+    {
+        EventBus.Instance.GoalScored -= GoalScored;
     }
     public void GoalScored()
     {
-        SpawnBall();
+        ResetBall();
     }
 
     private void SpawnBall()
     {
-        Instantiate(ballprefab, spawnLocation, spawnRotation).GetComponent<MeshRenderer>().material = mats[UnityEngine.Random.Range(0, mats.Count)];
+        ball = Instantiate(ballprefab, spawnLocation, spawnRotation);
+        ball.GetComponent<MeshRenderer>().material = mats[UnityEngine.Random.Range(0, mats.Count)];
+    }
+    private void ResetBall()
+    {
+        ball.GetComponent<Rigidbody>().freezeRotation = true;
+        ball.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
+        ball.transform.position = spawnLocation;
+        ball.GetComponent<MeshRenderer>().material = mats[UnityEngine.Random.Range(0, mats.Count)];
+        ball.GetComponent<Rigidbody>().freezeRotation = false;
     }
     
 }

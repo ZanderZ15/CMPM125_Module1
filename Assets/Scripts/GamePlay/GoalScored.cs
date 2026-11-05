@@ -8,8 +8,7 @@ public class GoalScored : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if(!other.CompareTag("Ball")) {return;}
-        Destroy(other.gameObject);
-        Debug.Log("GOAL!");
+        //Debug.Log("GOAL!");
         EventBus.Instance.OnGoalScored(gameObject.tag);
     }
 }
