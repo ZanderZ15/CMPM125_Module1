@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
     private int oran_goals = 0;
     
     public enum GameState
-    { //useful if/when i want to add more formal resets on goals
+    { 
         MENU,
         PREGAME,
         INGAME,

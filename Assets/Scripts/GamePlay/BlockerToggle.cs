@@ -27,6 +27,7 @@ public class BlockerToggle : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("DoNotTrigger")){return;}
         if (blockers_group.activeInHierarchy)
             blockers_group.SetActive(false);
         else
