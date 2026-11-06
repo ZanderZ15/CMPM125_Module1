@@ -5,7 +5,8 @@ using UnityEngine.UIElements;
 public class GoalieAI : MonoBehaviour
 {
     [SerializeField] List<GameObject> patrol_points;
-    Rigidbody rb;
+    private GameObject ball;
+    private Rigidbody rb;
     private bool paused = true;
     private float max_speed = 18f;
     private enum GoalieState
@@ -22,6 +23,7 @@ public class GoalieAI : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody>();
         state = GoalieState.IDLE1;
         EventBus.Instance.StateChange += Pause;
+        ball = GameObject.FindWithTag("Ball");
     }
 
     void FixedUpdate()
@@ -42,7 +44,7 @@ public class GoalieAI : MonoBehaviour
                 Drive(patrol_points[3].transform.position, 2);
                 return;
             case GoalieState.SEEBALL:
-                //2 is 1 now ok?
+                Drive(ball.transform.position, 1);
                 return;
 
         }
@@ -63,8 +65,6 @@ public class GoalieAI : MonoBehaviour
 
     void Drive(Vector3 target, int modifier)
     {
-        //rotate toward target
-        //add speed
         Vector3 direction = target - transform.position;
         direction.y = 0; 
 
@@ -77,6 +77,7 @@ public class GoalieAI : MonoBehaviour
         rb.AddRelativeForce(Vector3.forward*25f, ForceMode.Acceleration);
         CapSpeed(rb, modifier);
     }
+
     void CapSpeed(Rigidbody rb, int modifier)
     {
         Vector3 v_current = rb.linearVelocity;
@@ -87,6 +88,7 @@ public class GoalieAI : MonoBehaviour
             rb.linearVelocity = new Vector3(v_horizontal.x, v_current.y, v_horizontal.z);
         }
     }    
+    
     public void PointHit(int point)
     {
         switch (point)
@@ -104,6 +106,11 @@ public class GoalieAI : MonoBehaviour
                 state = GoalieState.IDLE1;
                 break;
         }
+    }
+    public void SawBall()
+    {
+        state = GoalieState.SEEBALL;
+        Debug.Log("BRO BALLLLLLLL");
     }
     //Idle: Drive around near the goal
     //See ball: drive at it and jump at it

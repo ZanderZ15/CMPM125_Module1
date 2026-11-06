@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class GoalieVision : MonoBehaviour
 {
+    [SerializeField] private GameObject goalie;
     void Start()
     {
         
@@ -13,7 +14,7 @@ public class GoalieVision : MonoBehaviour
     {
         if (other.CompareTag("Ball"))
         {
-            
+            goalie.GetComponent<GoalieAI>().SawBall();
         }
     }
 }
