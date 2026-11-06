@@ -18,12 +18,13 @@ public class GoalieAI : MonoBehaviour
         SEEBALL
     }
     private GoalieState state;
+    private GoalieState last_state;
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
         state = GoalieState.IDLE1;
         EventBus.Instance.StateChange += Pause;
-        ball = GameObject.FindWithTag("Ball");
+        //ball = GameObject.FindWithTag("Ball");
     }
 
     void FixedUpdate()
@@ -91,30 +92,45 @@ public class GoalieAI : MonoBehaviour
     
     public void PointHit(int point)
     {
+        if (state == GoalieState.SEEBALL){return;}
         switch (point)
         {
             case 1:
-                state = GoalieState.IDLE2;
+                if (state == GoalieState.IDLE1)
+                {
+                    state = GoalieState.IDLE2;
+                }
                 break;
             case 2:
-                state = GoalieState.IDLE3;
+                if (state == GoalieState.IDLE2)
+                {
+                    state = GoalieState.IDLE3;
+                }
                 break;
             case 3:
-                state = GoalieState.IDLE4;
+                if (state == GoalieState.IDLE3)
+                {
+                    state = GoalieState.IDLE4;
+                }
                 break;
             case 4:
-                state = GoalieState.IDLE1;
+                if (state == GoalieState.IDLE4)
+                {
+                    state = GoalieState.IDLE1;
+                }
                 break;
         }
     }
-    public void SawBall()
+    public void SawBall(GameObject found_ball)
     {
+        ball = found_ball;
+        last_state = state;
         state = GoalieState.SEEBALL;
         Debug.Log("BRO BALLLLLLLL");
     }
-    //Idle: Drive around near the goal
-    //See ball: drive at it and jump at it
-    //Should be only forwards and rotate code (god save me)
-    
-    //Have a trigger in scene that is too far from the goal that onexit causes it to return to idling
+    public void GiveUpBall()
+    {
+        Debug.Log("Ahhh, its not worth it");
+        state = last_state;
+    }
 }

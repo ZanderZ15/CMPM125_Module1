@@ -14,7 +14,7 @@ public class GoalieVision : MonoBehaviour
     {
         if (other.CompareTag("Ball"))
         {
-            goalie.GetComponent<GoalieAI>().SawBall();
+            goalie.GetComponent<GoalieAI>().SawBall(other.gameObject);
         }
     }
 }
