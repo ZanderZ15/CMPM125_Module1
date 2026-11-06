@@ -5,10 +5,14 @@ using UnityEngine.UIElements;
 public class GoalieAI : MonoBehaviour
 {
     [SerializeField] List<GameObject> patrol_points;
+    [SerializeField] private float rayLength = .55f;
+    [SerializeField] private LayerMask groundMask;
     private GameObject ball;
     private Rigidbody rb;
     private bool paused = true;
     private float max_speed = 18f;
+    private float jumpPower = 7.5f;
+    private RaycastHit hit_data;
     private enum GoalieState
     {
         IDLE1,
@@ -29,6 +33,8 @@ public class GoalieAI : MonoBehaviour
 
     void FixedUpdate()
     {
+        Debug.DrawRay(transform.position, transform.forward * 10, Color.red, 0.1f);
+        Debug.DrawRay(transform.position, Vector3.down * rayLength, Color.red, 0.1f);
         if (paused) {return;}
         switch (state)
         {
@@ -46,6 +52,7 @@ public class GoalieAI : MonoBehaviour
                 return;
             case GoalieState.SEEBALL:
                 Drive(ball.transform.position, 1);
+                TryJump();
                 return;
 
         }
@@ -77,6 +84,19 @@ public class GoalieAI : MonoBehaviour
         }
         rb.AddRelativeForce(Vector3.forward*25f, ForceMode.Acceleration);
         CapSpeed(rb, modifier);
+    }
+    private void TryJump()
+    {
+        if(Physics.Raycast(transform.position, transform.forward*3, out hit_data, 2f))
+        {
+            if (Physics.Raycast(transform.position, Vector3.down, rayLength, groundMask))
+            {
+                if (hit_data.collider.CompareTag("ball"))
+                {
+                    rb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
+                }
+            }
+        }
     }
 
     void CapSpeed(Rigidbody rb, int modifier)
@@ -133,4 +153,5 @@ public class GoalieAI : MonoBehaviour
         Debug.Log("Ahhh, its not worth it");
         state = last_state;
     }
+    
 }
