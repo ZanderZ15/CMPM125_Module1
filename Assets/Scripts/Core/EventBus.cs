@@ -68,5 +68,30 @@ public class EventBus
     {
         GameEnd?.Invoke();
     }
-
+    //Animation
+    public event Action Point1;
+    public void OnPoint1Hit()
+    {
+        Point1?.Invoke();
+    }
+    public event Action Point2;
+    public void OnPoint2Hit()
+    {
+        Point2?.Invoke();
+    }
+    public event Action Point3;
+    public void OnPoint3Hit()
+    {
+        Point3?.Invoke();
+    }
+    public event Action Point4;
+    public void OnPoint4Hit()
+    {
+        Point4?.Invoke();
+    }
+    public event Action SpinPoint;
+    public void OnSpinPoint()
+    {
+        SpinPoint?.Invoke();
+    }
 }
