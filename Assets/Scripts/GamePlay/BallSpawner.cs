@@ -18,12 +18,11 @@ public class BallSpawner : MonoBehaviour
     [SerializeField] private Material red_mat;
     [SerializeField] private Material purple_mat;
     [SerializeField] private Material green_mat;
+    [SerializeField] private int ballLayer;
 
     List<Material> mats;
 
     private GameObject ball;
-
-    
 
     private void OnEnable()
     {
@@ -52,6 +51,7 @@ public class BallSpawner : MonoBehaviour
     {
         ball = Instantiate(ballprefab, spawnLocation, spawnRotation);
         ball.GetComponent<MeshRenderer>().material = mats[UnityEngine.Random.Range(0, mats.Count)];
+        ball.layer = ballLayer;
     }
     private void ResetBall()
     {

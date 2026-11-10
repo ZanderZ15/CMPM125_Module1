@@ -6,6 +6,7 @@ public class GoalieAI : MonoBehaviour
 {
     [SerializeField] List<GameObject> patrol_points;
     [SerializeField] private float rayLength = .55f;
+    [SerializeField] private LayerMask ballMask;
     [SerializeField] private LayerMask groundMask;
     private GameObject ball;
     private Rigidbody rb;
@@ -14,6 +15,7 @@ public class GoalieAI : MonoBehaviour
     private float jumpPower = 7.5f;
     private RaycastHit hit_data;
     private bool returning = false;
+    Quaternion tiltRotation;
     private enum GoalieState
     {
         IDLE1,
@@ -30,6 +32,8 @@ public class GoalieAI : MonoBehaviour
         state = GoalieState.IDLE1;
         EventBus.Instance.StateChange += Pause;
         //ball = GameObject.FindWithTag("Ball");
+        float upwardAngle = 25f; 
+        tiltRotation = Quaternion.AngleAxis(-upwardAngle, transform.right);
     }
 
     void FixedUpdate()
@@ -54,7 +58,13 @@ public class GoalieAI : MonoBehaviour
                 break;
             case GoalieState.SEEBALL:
                 Drive(ball.transform.position, 1);
-                TryJump();
+                Vector3 angledForwardVector = (tiltRotation * transform.forward) * 5f;
+                
+                Debug.DrawRay(transform.position, angledForwardVector, Color.red, 2f);
+                if(Physics.Raycast(transform.position, angledForwardVector, out hit_data, 5f, ballMask))
+                {
+                    TryJump();
+                }
                 break;
         }
     }
@@ -87,23 +97,15 @@ public class GoalieAI : MonoBehaviour
         CapSpeed(rb, modifier);
     }
     private void TryJump()
-    {
-        
-        float upwardAngle = 25f; 
-        Quaternion tiltRotation = Quaternion.AngleAxis(-upwardAngle, transform.right);
-        Vector3 angledForwardVector = (tiltRotation * transform.forward) * 3f;
-        Debug.DrawRay(transform.position, angledForwardVector * 10, Color.red, 0.1f);
-
-        if(Physics.Raycast(transform.position, angledForwardVector, out hit_data, 2f))
+    { 
+        if (Physics.Raycast(transform.position, Vector3.down, rayLength, groundMask))
         {
-            if (Physics.Raycast(transform.position, Vector3.down, rayLength, groundMask))
+            if (hit_data.collider.CompareTag("Ball"))
             {
-                if (hit_data.collider.CompareTag("Ball"))
-                {
-                    rb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
-                }
+                rb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
             }
         }
+        
     }
 
     void CapSpeed(Rigidbody rb, int modifier)
@@ -156,11 +158,11 @@ public class GoalieAI : MonoBehaviour
         ball = found_ball;
         last_state = state;
         state = GoalieState.SEEBALL;
-        Debug.Log("BRO BALLLLLLLL");
+        //Debug.Log("BRO BALLLLLLLL");
     }
     public void GiveUpBall()
     {
-        Debug.Log("Ahhh, its not worth it");
+        //Debug.Log("Ahhh, its not worth it");
         state = last_state;
         returning = true;
         
