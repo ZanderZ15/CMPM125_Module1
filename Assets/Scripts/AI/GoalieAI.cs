@@ -13,6 +13,7 @@ public class GoalieAI : MonoBehaviour
     private float max_speed = 18f;
     private float jumpPower = 7.5f;
     private RaycastHit hit_data;
+    private bool returning = false;
     private enum GoalieState
     {
         IDLE1,
@@ -33,28 +34,28 @@ public class GoalieAI : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.DrawRay(transform.position, transform.forward * 10, Color.red, 0.1f);
-        Debug.DrawRay(transform.position, Vector3.down * rayLength, Color.red, 0.1f);
+        //might be possible to remove this whole switch case and replace with just Drive(patrol_points[state]) somehow
+        
+        //if (returning && state == GoalieState.SEEBALL) {state = last_state;}
         if (paused) {return;}
         switch (state)
         {
             case GoalieState.IDLE1:
                 Drive(patrol_points[0].transform.position, 2);
-                return;
+                break;
             case GoalieState.IDLE2:
                 Drive(patrol_points[1].transform.position, 2);
-                return;
+                break;
             case GoalieState.IDLE3:
                 Drive(patrol_points[2].transform.position, 2);
-                return;
+                break;
             case GoalieState.IDLE4:
                 Drive(patrol_points[3].transform.position, 2);
-                return;
+                break;
             case GoalieState.SEEBALL:
                 Drive(ball.transform.position, 1);
                 TryJump();
-                return;
-
+                break;
         }
     }
     void Pause()
@@ -87,11 +88,17 @@ public class GoalieAI : MonoBehaviour
     }
     private void TryJump()
     {
-        if(Physics.Raycast(transform.position, transform.forward*3, out hit_data, 2f))
+        
+        float upwardAngle = 25f; 
+        Quaternion tiltRotation = Quaternion.AngleAxis(-upwardAngle, transform.right);
+        Vector3 angledForwardVector = (tiltRotation * transform.forward) * 3f;
+        Debug.DrawRay(transform.position, angledForwardVector * 10, Color.red, 0.1f);
+
+        if(Physics.Raycast(transform.position, angledForwardVector, out hit_data, 2f))
         {
             if (Physics.Raycast(transform.position, Vector3.down, rayLength, groundMask))
             {
-                if (hit_data.collider.CompareTag("ball"))
+                if (hit_data.collider.CompareTag("Ball"))
                 {
                     rb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
                 }
@@ -113,6 +120,7 @@ public class GoalieAI : MonoBehaviour
     public void PointHit(int point)
     {
         if (state == GoalieState.SEEBALL){return;}
+        returning = false;
         switch (point)
         {
             case 1:
@@ -143,6 +151,8 @@ public class GoalieAI : MonoBehaviour
     }
     public void SawBall(GameObject found_ball)
     {
+        if (state == GoalieState.SEEBALL || returning) {return;} 
+    
         ball = found_ball;
         last_state = state;
         state = GoalieState.SEEBALL;
@@ -152,6 +162,8 @@ public class GoalieAI : MonoBehaviour
     {
         Debug.Log("Ahhh, its not worth it");
         state = last_state;
+        returning = true;
+        
     }
     
 }
