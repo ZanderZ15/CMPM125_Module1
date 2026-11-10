@@ -1,8 +1,6 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using System.Collections;
+using UnityEngine.EventSystems;
 
 
 public class MenuController : MonoBehaviour
@@ -15,6 +13,7 @@ public class MenuController : MonoBehaviour
     [SerializeField] private Canvas[] screens;
     [SerializeField] private GameObject[] sliders;
     [SerializeField] private CanvasGroup pausegroup;
+    //[SerializeField] private EventSystem EventSystem;
     private Canvas current_screen;
     private AsyncOperation loadOperation;
 
@@ -44,15 +43,10 @@ public class MenuController : MonoBehaviour
         options_button.onClick.RemoveAllListeners();
         credits_button.onClick.RemoveAllListeners();
     }
-
-    private void LoadScene(string scenename)
-    {
-        Debug.Log("sceneName to load: " + scenename);
-        SceneManager.LoadSceneAsync(scenename);
-    }
     void OnPlayButtonClicked()
     {
-        //TODO
+        EventSystem.current.SetSelectedGameObject(null);
+
         screens[0].enabled = false;
         EventBus.Instance.OnPlayGame();
         //
@@ -103,8 +97,8 @@ public class MenuController : MonoBehaviour
     }
     void Resume()
     {
-        //TODO
         //Banish the menus
+        EventSystem.current.SetSelectedGameObject(null);
         EventBus.Instance.GamePlaying();
         pausegroup.interactable = false;
         screens[3].enabled = false;

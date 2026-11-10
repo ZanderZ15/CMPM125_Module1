@@ -1,6 +1,3 @@
-using System;
-using System.Drawing;
-using Unity.Microsoft.GDK;
 using UnityEngine;
 
 public class PatrolPointHelper : MonoBehaviour

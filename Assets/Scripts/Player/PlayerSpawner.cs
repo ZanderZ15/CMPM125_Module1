@@ -1,11 +1,5 @@
 using System.Collections.Generic;
-using Unity.Mathematics;
-using Unity.VisualScripting;
-using UnityEditor.SceneManagement;
 using UnityEngine;
-using UnityEngine.Analytics;
-using UnityEngine.SocialPlatforms.GameCenter;
-using UnityEngine.UIElements;
 
 
 public class PlayerSpawner : MonoBehaviour
