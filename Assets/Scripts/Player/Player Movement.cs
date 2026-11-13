@@ -16,6 +16,7 @@ public class Movement : MonoBehaviour
     Vector2 move2d;
     Vector3 moveVal;
 
+    Vector3 RayPos;
     private Rigidbody rigidbody;
 
     private float rayLength = .55f;
@@ -50,6 +51,8 @@ public class Movement : MonoBehaviour
     }
     void FixedUpdate()
     {
+        RayPos = new Vector3(transform.position.x, transform.position.y + .5f, transform.position.z);
+        Debug.DrawRay(RayPos, Vector3.down * rayLength, Color.red, 0.1f);
         if (paused) {return;}
         rigidbody.AddRelativeForce(moveVal * acc, ForceMode.Acceleration);
         CapSpeed(rigidbody);
@@ -79,8 +82,8 @@ public class Movement : MonoBehaviour
     }    
     bool Grounded()
     {
-        Debug.DrawRay(transform.position, Vector3.down * rayLength, Color.red, 0.1f);
-        bool tf = Physics.Raycast(transform.position, Vector3.down, rayLength, groundMask);
+        RayPos = new Vector3(transform.position.x, transform.position.y + .5f, transform.position.z);
+        bool tf = Physics.Raycast(RayPos, Vector3.down, rayLength, groundMask);
         //Debug.Log(tf);
         return tf;
     }

@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class GoalieAI : MonoBehaviour
 {
+    //Something is off with vision/ sawball
     [SerializeField] List<GameObject> patrol_points;
     [SerializeField] private float rayLength = .55f;
     [SerializeField] private LayerMask ballMask;
