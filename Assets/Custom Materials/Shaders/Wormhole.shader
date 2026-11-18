@@ -7,7 +7,7 @@ Shader "Custom/UniverseWithin"
         _MainTex ("Audio FFT Texture (Optional)", 2D) = "black" {}
         _AudioBass ("Audio Bass Level", Range(0, 1)) = 0.2
         _MousePos ("Offset / Mouse Parallax", Vector) = (0, 0, 0, 0)
-        _Speed ("Animation Speed", Float) = 0.5
+        _Speed ("Animation Speed", Float) = 0.1
         _UseFadeCycle ("Use 230s Fade Cycle", Range(0, 1)) = 0
     }
     SubShader
